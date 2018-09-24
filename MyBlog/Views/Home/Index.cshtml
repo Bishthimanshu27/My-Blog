@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MyBlog.Models.BlogPost>
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Newsbit</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:400,600,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/fonts/ionicons.css" rel="stylesheet" />
+
+    <link href="~/Content/styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <h1 style="text-align: center">Blogs</h1>
+
+    <br/>
+    @foreach (var item in Model)
+    {
+    <div class="container">
+        <div class="h-600x h-sm-auto">
+                    <a class="pos-relative h-100 dplay-block" href="#">
+
+                        <div class="img-bg bg-1 bg-grad-layer-6" style="background: url('@item.MediaUrl')"></div>
+
+                        <div class="abs-blr color-white p-20 bg-sm-color-7">
+                            <h3 class="mb-15 mb-sm-5 font-sm-13"><b>@item.Title</b></h3>
+                            <ul class="list-li-mr-20">
+                                <li><span class="color-primary"><b></b></span>@item.Created</li>
+                           
+                            </ul>
+                        </div><!--abs-blr -->
+                    </a><!-- pos-relative -->
+            </div>
+                </div><!-- w-1-3 -->
+        <br/>
+<br/>
+            
+    
+    
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/tether.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/scripts.js"></script>
+    }
+</body>
+</html>
+
+
+@*@foreach(var item in Model)
+{
+   <div>@item.Title</div>   
+}*@
