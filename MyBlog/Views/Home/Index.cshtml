@@ -30,14 +30,14 @@
     {
     <div class="container">
         <div class="h-600x h-sm-auto">
-                    <a class="pos-relative h-100 dplay-block" href="#">
-
-                        <div class="img-bg bg-1 bg-grad-layer-6" style="background: url('@item.MediaUrl')"></div>
-
+                    <a class="pos-relative h-100 dplay-block" href="@Url.Action( @item.Slug, "Blog")">
+                        <div style="width: 100%">
+                            <div class="img-bg bg-1 bg-grad-layer-6" style="background: url('@item.MediaUrl')"></div>
+                        </div>
                         <div class="abs-blr color-white p-20 bg-sm-color-7">
-                            <h3 class="mb-15 mb-sm-5 font-sm-13"><b>@item.Title</b></h3>
+                            <h3 class="mb-15 mb-sm-5 font-sm-13" style="text-align:center"><b>@item.Title</b></h3>
                             <ul class="list-li-mr-20">
-                                <li><span class="color-primary"><b></b></span>@item.Created</li>
+                                <li><span class="color-primary" style="text-align:center"><b></b></span>@item.Created.ToString("dd/MM/yy HH:mm")</li>
                            
                             </ul>
                         </div><!--abs-blr -->

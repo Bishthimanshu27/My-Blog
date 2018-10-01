@@ -18,7 +18,7 @@ namespace MyBlog
                 defaults: new
                 {
                     controller = "BlogPosts",
-                    action = "Details",
+                    action = "DetailsSlug",
                     slug = UrlParameter.Optional
                 });
 

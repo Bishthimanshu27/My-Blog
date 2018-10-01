@@ -1,7 +1,12 @@
-﻿@model IEnumerable<MyBlog.Models.BlogPost>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IEnumerable<MyBlog.Models.BlogPost>
 
 @{
     ViewBag.Title = "Index";
+    var pagedList = (IPagedList)Model;
+
 }
 
 <link href="~/Content/styles.css" rel="stylesheet" />
@@ -17,6 +22,13 @@
         }
 
     </p>
+
+    
+@using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get))
+{
+    <input type="text" class="form-control" name="searchString" placeholder="Search for posts" value="@ViewBag.SearchString"/>
+    <input type="submit" class="btn btn-primary" value="Search!" />
+}
     <table class="table">
         <tr>
             <th>
@@ -71,12 +83,23 @@
                         <img class="img-responsive" src="@item.MediaUrl" alt="">
                     }
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || (User.IsInRole("Moderrator"))))
+                            {
+                              @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                              @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                             }
+
+                    @Html.ActionLink("Details", "DetailsSlug", new { slug = item.Slug }) 
+                  
                 </td>
             </tr>
         }
 
     </table>
+</div>
+
+<div class="container">
+    Page @(pagedList.PageCount < pagedList.PageNumber ? 0 : pagedList.PageNumber) of @pagedList.PageCount
+    @Html.PagedListPager(pagedList, page => Url.Action("Index", new { page, ViewBag.SearchString }))
+
 </div>

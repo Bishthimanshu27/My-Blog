@@ -21,6 +21,8 @@
 
     <link href="~/Content/Site.css" rel="stylesheet" />
 
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css">
+
 
 </head>
 <body>
@@ -32,7 +34,7 @@
 
                     <ul class="float-left float-sm-none list-a-plr-10 list-a-plr-sm-5 list-a-ptb-15 list-a-ptb-sm-10">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a class="pl-0 pl-sm-10" href="#">About</a></li>
+                        <li><a href="@Url.Action("About", "Home")"">About</a></li>
                         <li><a href="@Url.Action("contact", "Home")">Contact</a></li>
                         <li><a href="@Url.Action("Index","BlogPosts")">Blogpost</a></li>
 
@@ -82,7 +84,7 @@
                 </div><!-- bg-191 -->
 
                 <div class="container">
-                    <a class="logo" href=""><img src="images/logo-black.png" alt="Logo"></a>
+                    <a class="logo" href=""><img src="~/images/logo.png" alt="Logo"></a>
 
                     <a class="right-area src-btn" href="@Url.Action("Index", "Home")">
                         <i class="active src-icn ion-search"></i>

@@ -3,79 +3,117 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>BlogPost</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
 
-<div>
-    <h4>BlogPost</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Slug)
+            </dt>
+            `
+            <dd>
+                @Html.DisplayFor(model => model.Slug)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
-        `
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Body)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Body)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MediaUrl)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MediaUrl)
-        </dt>
+            <dd>
+                Html.DisplayFor(model => model.MediaUrl)
 
-        <dd>
-            Html.DisplayFor(model => model.MediaUrl)
+                @if (Model.MediaUrl != null)
+                {
 
-            @if (Model.MediaUrl != null)
+                    <img class="img-responsive" src="@Model.MediaUrl" alt="">
+                }
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Published)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Published)
+            </dd>
+
+        </dl>
+    </div>
+    <div>
+        Comments : @foreach (var comment in Model.Comments)
+        {
+            <div>
+                @comment.Body
+                <br />
+                Created on: @comment.Created.ToString("dd/mm/yy HH:mm") by: @comment.AuthorId
+            </div>
+            if (User.Identity.IsAuthenticated &&
+           (User.IsInRole("Admin") || User.IsInRole("Moderator")))
             {
-
-                <img class="img-responsive" src="@Model.MediaUrl" alt="">
+                <a href="@Url.Action("Edit", "Comments", new { id = comment.Id } )">Edit Comment</a>
+                <a href="@Url.Action("Delete", "Comments", new { id = comment.Id })">Delete Comment</a>
             }
+        }
+    </div>
 
-        </dd>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div>
+            Submit
+        </div>
+        <div>
+            @using (Html.BeginForm("CreateComment", "BlogPosts", FormMethod.Post))
+            {
+                <input type="hidden" name="slug" value="@Model.Slug" />
+                <textarea name="Body"></textarea>
+                if (ViewBag.ErrorMessage != null)
+                {
+                    <span>@ViewBag.ErrorMessage</span>
+                }
+                <input type="submit" value="Submit" href="@Url.Action("edits","Index")" />
+            }
+        </div>
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

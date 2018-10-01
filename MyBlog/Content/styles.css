@@ -113,6 +113,9 @@ header{ position: relative; text-align: center; z-index: 1000; font-weight: 600;
 
 header i{ font-size: 1.1em; }
 
+img {
+    width: 100%;
+}
 
 /* BOTTOM HEADER */
 
@@ -400,6 +403,14 @@ header .main-menu li.drop-down a.mouseover + ul.drop-down-menu{ display: block;
 	
 }
 
+.img-res {
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
 
 /* BORDER */
 

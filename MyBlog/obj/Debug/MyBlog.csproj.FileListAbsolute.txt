@@ -118,3 +118,7 @@ C:\Users\SD10\source\repos\MyBlog\MyBlog\obj\Debug\MyBlog.csproj.CoreCompileInpu
 C:\Users\SD10\source\repos\MyBlog\MyBlog\obj\Debug\MyBlog.csproj.CopyComplete
 C:\Users\SD10\source\repos\MyBlog\MyBlog\obj\Debug\MyBlog.dll
 C:\Users\SD10\source\repos\MyBlog\MyBlog\obj\Debug\MyBlog.pdb
+C:\Users\SD10\source\repos\MyBlog\MyBlog\bin\PagedList.dll
+C:\Users\SD10\source\repos\MyBlog\MyBlog\bin\PagedList.Mvc.dll
+C:\Users\SD10\source\repos\MyBlog\MyBlog\bin\PagedList.xml
+C:\Users\SD10\source\repos\MyBlog\MyBlog\bin\PagedList.Mvc.xml

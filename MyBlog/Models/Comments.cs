@@ -9,9 +9,10 @@ namespace MyBlog.Models
     {
         public int Id { get; set; }
 
-        public int postId { get; set; }
+        public int BlogPostId { get; set; }
+        public virtual BlogPost BlogPost { get; set; }
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
 
